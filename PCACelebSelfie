@@ -1,0 +1,323 @@
+%%%README This project created by: John Emery
+%%% 
+clear all; close all; clc
+
+%import pics, grayscale, resize, and make values double
+Self = imresize(double(rgb2gray(imread('mySelfie','jpeg'))),[120 80]);
+Z = [];
+K1 = imresize(double(rgb2gray(imread('keanu1','jpeg'))),[120 80]); 
+K2 = imresize(double(rgb2gray(imread('keanu2','jpeg'))),[120 80]); 
+K3 = imresize(double(rgb2gray(imread('keanu3','jpeg'))),[120 80]); 
+K4 = imresize(double(rgb2gray(imread('keanu4','jpeg'))),[120 80]); 
+K5 = imresize(double(rgb2gray(imread('keanu5','jpeg'))),[120 80]); 
+K6 = imresize(double(rgb2gray(imread('keanu6','jpeg'))),[120 80]); 
+K7 = imresize(double(rgb2gray(imread('keanu7','jpeg'))),[120 80]); 
+K8 = imresize(double(rgb2gray(imread('keanu8','jpeg'))),[120 80]); 
+K9 = imresize(double(rgb2gray(imread('keanu9','jpeg'))),[120 80]); 
+K10 = imresize(double(rgb2gray(imread('keanu10','jpeg'))),[120 80]); 
+K11 = imresize(double(rgb2gray(imread('keanu11','jpeg'))),[120 80]); 
+K12 = imresize(double(rgb2gray(imread('keanu12','jpeg'))),[120 80]); 
+
+A1 = imresize(double(rgb2gray(imread('ari1','jpeg'))),[120 80]);
+A2 = imresize(double(rgb2gray(imread('ari2','jpeg'))),[120 80]);
+A3 = imresize(double(rgb2gray(imread('ari3','jpeg'))),[120 80]);
+A4 = imresize(double(rgb2gray(imread('ari4','jpeg'))),[120 80]);
+A5 = imresize(double(rgb2gray(imread('ari5','jpeg'))),[120 80]);
+A6 = imresize(double(rgb2gray(imread('ari6','jpeg'))),[120 80]);
+A7 = imresize(double(rgb2gray(imread('ari7','jpeg'))),[120 80]);
+A8 = imresize(double(rgb2gray(imread('ari8','jpeg'))),[120 80]);
+A9 = imresize(double(rgb2gray(imread('ari9','jpeg'))),[120 80]);
+A10 = imresize(double(rgb2gray(imread('ari10','jpeg'))),[120 80]);
+A11 = imresize(double(rgb2gray(imread('ari11','jpeg'))),[120 80]);
+A12 = imresize(double(rgb2gray(imread('ari12','jpeg'))),[120 80]);
+
+R1 = imresize(double(rgb2gray(imread('arn1','jpeg'))),[120 80]);
+R2 = imresize(double(rgb2gray(imread('arn2','jpeg'))),[120 80]);
+R3 = imresize(double(rgb2gray(imread('arn3','jpeg'))),[120 80]);
+R4 = imresize(double(rgb2gray(imread('arn4','jpeg'))),[120 80]);
+R5 = imresize(double(rgb2gray(imread('arn5','jpeg'))),[120 80]);
+R6 = imresize(double(rgb2gray(imread('arn6','jpeg'))),[120 80]);
+R7 = imresize(double(rgb2gray(imread('arn7','jpeg'))),[120 80]);
+R8 = imresize(double(rgb2gray(imread('arn8','jpeg'))),[120 80]);
+R9 = imresize(double(rgb2gray(imread('arn9','jpeg'))),[120 80]);
+R10 = imresize(double(rgb2gray(imread('arn10','jpeg'))),[120 80]);
+R11 = imresize(double(rgb2gray(imread('arn11','jpeg'))),[120 80]);
+R12 = imresize(double(rgb2gray(imread('arn12','jpeg'))),[120 80]);
+
+C1 = imresize(double(rgb2gray(imread('chad1','jpeg'))),[120 80]);
+C2 = imresize(double(rgb2gray(imread('chad2','jpeg'))),[120 80]);
+C3 = imresize(double(rgb2gray(imread('chad3','jpeg'))),[120 80]);
+C4 = imresize(double(rgb2gray(imread('chad4','jpeg'))),[120 80]);
+C5 = imresize(double(rgb2gray(imread('chad5','jpeg'))),[120 80]);
+C6 = imresize(double(rgb2gray(imread('chad6','jpeg'))),[120 80]);
+C7 = imresize(double(rgb2gray(imread('chad7','jpeg'))),[120 80]);
+C8 = imresize(double(rgb2gray(imread('chad8','jpeg'))),[120 80]);
+C9 = imresize(double(rgb2gray(imread('chad9','jpeg'))),[120 80]);
+C10 = imresize(double(rgb2gray(imread('chad10','jpeg'))),[120 80]);
+C11 = imresize(double(rgb2gray(imread('chad11','jpeg'))),[120 80]);
+C12 = imresize(double(rgb2gray(imread('chad12','jpeg'))),[120 80]);
+
+M1 = imresize(double(rgb2gray(imread('misty1','jpeg'))),[120 80]);
+M2 = imresize(double(rgb2gray(imread('misty2','jpeg'))),[120 80]);
+M3 = imresize(double(rgb2gray(imread('misty3','jpeg'))),[120 80]);
+M4 = imresize(double(rgb2gray(imread('misty4','jpeg'))),[120 80]);
+M5 = imresize(double(rgb2gray(imread('misty5','jpeg'))),[120 80]);
+M6 = imresize(double(rgb2gray(imread('misty6','jpeg'))),[120 80]);
+M7 = imresize(double(rgb2gray(imread('misty7','jpeg'))),[120 80]);
+M8 = imresize(double(rgb2gray(imread('misty8','jpeg'))),[120 80]);
+M9 = imresize(double(rgb2gray(imread('misty9','jpeg'))),[120 80]);
+M10 = imresize(double(rgb2gray(imread('misty10','jpeg'))),[120 80]);
+M11 = imresize(double(rgb2gray(imread('misty11','jpeg'))),[120 80]);
+M12 = imresize(double(rgb2gray(imread('misty12','jpeg'))),[120 80]);
+
+J1 = imresize(double(rgb2gray(imread('matt1','jpeg'))),[120 80]);
+J2 = imresize(double(rgb2gray(imread('matt2','jpeg'))),[120 80]);
+J3 = imresize(double(rgb2gray(imread('matt3','jpeg'))),[120 80]);
+J4 = imresize(double(rgb2gray(imread('matt4','jpeg'))),[120 80]);
+J5 = imresize(double(rgb2gray(imread('matt5','jpeg'))),[120 80]);
+J6 = imresize(double(rgb2gray(imread('matt6','jpeg'))),[120 80]);
+J7 = imresize(double(rgb2gray(imread('matt7','jpeg'))),[120 80]);
+J8 = imresize(double(rgb2gray(imread('matt8','jpeg'))),[120 80]);
+J9 = imresize(double(rgb2gray(imread('matt9','jpeg'))),[120 80]);
+J10 = imresize(double(rgb2gray(imread('matt10','jpeg'))),[120 80]);
+J11 = imresize(double(rgb2gray(imread('matt11','jpeg'))),[120 80]);
+J12 = imresize(double(rgb2gray(imread('matt12','jpeg'))),[120 80]);
+
+S1 = imresize(double(rgb2gray(imread('sarah1','jpeg'))),[120 80]);
+S2 = imresize(double(rgb2gray(imread('sarah2','jpeg'))),[120 80]);
+S3 = imresize(double(rgb2gray(imread('sarah3','jpeg'))),[120 80]);
+S4 = imresize(double(rgb2gray(imread('sarah4','jpeg'))),[120 80]);
+S5 = imresize(double(rgb2gray(imread('sarah5','jpeg'))),[120 80]);
+S6 = imresize(double(rgb2gray(imread('sarah6','jpeg'))),[120 80]);
+S7 = imresize(double(rgb2gray(imread('sarah7','jpeg'))),[120 80]);
+S8 = imresize(double(rgb2gray(imread('sarah8','jpeg'))),[120 80]);
+S9 = imresize(double(rgb2gray(imread('sarah9','jpeg'))),[120 80]);
+S10 = imresize(double(rgb2gray(imread('sarah10','jpeg'))),[120 80]);
+S11 = imresize(double(rgb2gray(imread('sarah11','jpeg'))),[120 80]);
+S12 = imresize(double(rgb2gray(imread('sarah12','jpeg'))),[120 80]);
+
+sumK = K1+K2+K3+K4+K5+K6+K7+K8+K9+K10+K11+K12;
+sumA= A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12;
+sumR= R1+R2+R3+R4+R5+R6+R7+R8+R9+R10+R11+R12;
+sumC=C1+C2+C3+C4+C5+C6+C7+C8+C9+C10+C11+C12;
+sumM= M1+M2+M3+M4+M5+M6+M7+M8+M9+M10+M11+M12;
+sumJ = J1+J2+J3+J4+J5+J6+J7+J8+J9+J10+J11+J12;
+sumS = S1+S2+S3+S4+S5+S6+S7+S8+S9+S10+S11+S12;
+AveK=(K1+K2+K3+K4+K5+K6+K7+K8+K9+K10+K11+K12)/12;
+AveA=(A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12)/12;
+AveR=(R1+R2+R3+R4+R5+R6+R7+R8+R9+R10+R11+R12)/12;
+AveC=(C1+C2+C3+C4+C5+C6+C7+C8+C9+C10+C11+C12)/12;
+AveM=(M1+M2+M3+M4+M5+M6+M7+M8+M9+M10+M11+M12)/12;
+AveJ=(J1+J2+J3+J4+J5+J6+J7+J8+J9+J10+J11+J12)/12;
+AveS=(S1+S2+S3+S4+S5+S6+S7+S8+S9+S10+S11+S12)/12;
+AveFace=(sumK+sumA+sumR+sumC+sumM+sumJ+sumS)/84;
+
+figure(2),
+subplot(3,3,1), pcolor(flipud(AveK)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,2), pcolor(flipud(AveA)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,3), pcolor(flipud(AveR)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,4), pcolor(flipud(AveC)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,5), pcolor(flipud(AveM)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,6), pcolor(flipud(AveJ)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,7), pcolor(flipud(AveS)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(3,3,9), pcolor(flipud(AveFace)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+self = reshape(Self,1,120*80)
+
+k1=reshape(K1,1,120*80) 				%put matrices into vectors
+k2=reshape(K2,1,120*80)
+k3=reshape(K3,1,120*80)
+k4=reshape(K4,1,120*80)
+k5=reshape(K5,1,120*80)
+k6=reshape(K6,1,120*80)
+k7=reshape(K7,1,120*80)
+k8=reshape(K8,1,120*80)
+k9=reshape(K9,1,120*80)
+k10=reshape(K10,1,120*80)
+k11=reshape(K11,1,120*80)
+k12=reshape(K12,1,120*80)
+aveK = reshape(AveK,1,120*80)
+
+a1=reshape(A1,1,120*80) 				%put matrices into vectors
+a2=reshape(A2,1,120*80)
+a3=reshape(A3,1,120*80)
+a4=reshape(A4,1,120*80)
+a5=reshape(A5,1,120*80)
+a6=reshape(A6,1,120*80)
+a7=reshape(A7,1,120*80)
+a8=reshape(A8,1,120*80)
+a9=reshape(A9,1,120*80)
+a10=reshape(A10,1,120*80)
+a11=reshape(A11,1,120*80)
+a12=reshape(A12,1,120*80)
+aveA = reshape(AveA,1,120*80)
+
+r1=reshape(R1,1,120*80) 				%put matrices into vectors
+r2=reshape(R2,1,120*80)
+r3=reshape(R3,1,120*80)
+r4=reshape(R4,1,120*80)
+r5=reshape(R5,1,120*80)
+r6=reshape(R6,1,120*80)
+r7=reshape(R7,1,120*80)
+r8=reshape(R8,1,120*80)
+r9=reshape(R9,1,120*80)
+r10=reshape(R10,1,120*80)
+r11=reshape(R11,1,120*80)
+r12=reshape(R12,1,120*80)
+aveR = reshape(AveR,1,120*80)
+
+c1=reshape(C1,1,120*80) 				%put matrices into vectors
+c2=reshape(C2,1,120*80)
+c3=reshape(C3,1,120*80)
+c4=reshape(C4,1,120*80)
+c5=reshape(C5,1,120*80)
+c6=reshape(C6,1,120*80)
+c7=reshape(C7,1,120*80)
+c8=reshape(C8,1,120*80)
+c9=reshape(C9,1,120*80)
+c10=reshape(C10,1,120*80)
+c11=reshape(C11,1,120*80)
+c12=reshape(C12,1,120*80)
+aveC = reshape(AveC,1,120*80)
+
+m1=reshape(M1,1,120*80) 				%put matrices into vectors
+m2=reshape(M2,1,120*80)
+m3=reshape(M3,1,120*80)
+m4=reshape(M4,1,120*80)
+m5=reshape(M5,1,120*80)
+m6=reshape(M6,1,120*80)
+m7=reshape(M7,1,120*80)
+m8=reshape(M8,1,120*80)
+m9=reshape(M9,1,120*80)
+m10=reshape(M10,1,120*80)
+m11=reshape(M11,1,120*80)
+m12=reshape(M12,1,120*80)
+aveM = reshape(AveM,1,120*80)
+
+j1=reshape(J1,1,120*80) 				%put matrices into vectors
+j2=reshape(J2,1,120*80)
+j3=reshape(J3,1,120*80)
+j4=reshape(J4,1,120*80)
+j5=reshape(J5,1,120*80)
+j6=reshape(J6,1,120*80)
+j7=reshape(J7,1,120*80)
+j8=reshape(J8,1,120*80)
+j9=reshape(J9,1,120*80)
+j10=reshape(J10,1,120*80)
+j11=reshape(J11,1,120*80)
+j12=reshape(J12,1,120*80)
+aveJ = reshape(AveJ,1,120*80)
+
+s1=reshape(S1,1,120*80) 				%put matrices into vectors
+s2=reshape(S2,1,120*80)
+s3=reshape(S3,1,120*80)
+s4=reshape(S4,1,120*80)
+s5=reshape(S5,1,120*80)
+s6=reshape(S6,1,120*80)
+s7=reshape(S7,1,120*80)
+s8=reshape(S8,1,120*80)
+s9=reshape(S9,1,120*80)
+s10=reshape(S10,1,120*80)
+s11=reshape(S11,1,120*80)
+s12=reshape(S12,1,120*80)
+aveS = reshape(AveS,1,120*80)
+
+B = [k1;k2;k3;k4;k5;k6;k7;k8;k9;k10;k11;k12;
+    a1;a2;a3;a4;a5;a6;a7;a8;a9;a10;a11;a12;
+    r1;r2;r3;r4;r5;r6;r7;r8;r9;r10;r11;r12;
+    c1;c2;c3;c4;c5;c6;c7;c8;c9;c10;c11;c12;
+    m1;m2;m3;m4;m5;m6;m7;m8;m9;m10;m11;m12;
+    j1;j2;j3;j4;j5;j6;j7;j8;j9;j10;j11;j12;
+    s1;s2;s3;s4;s5;s6;s7;s8;s9;s10;s11;s12] %image matrix; TK loop thru for error checking array
+
+C = B' * B;
+
+[V, D] = eigs(C, 20, 'lm');
+
+figure(3) %eigenface
+subplot(2,3,1), face1=reshape(V(:,1),120,80); pcolor(flipud(face1)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,2), face2=reshape(V(:,2),120,80); pcolor(flipud(face2)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,3), face3=reshape(V(:,3),120,80); pcolor(flipud(face3)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,4), face4=reshape(V(:,4),120,80); pcolor(flipud(face4)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,5), face5=reshape(V(:,5),120,80); pcolor(flipud(face5)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,6), face6=reshape(V(:,6),120,80); pcolor(flipud(face6)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+%BUILDME thumbPrint coeficients
+
+%Thatcher Reconstruction
+figure(4)
+projSelf=self*V;
+reconSelf = V*projSelf'; recS = reshape(reconSelf, 120, 80);
+subplot(2,2,1), pcolor(flipud(recS)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,2,2), pcolor(flipud(Self)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+% 
+% projK= aveK*V; note : projections of average onto the space means that
+% all will yield same result
+% projA= aveA*V;
+% projR= aveK*V;
+% projC= aveK*V;
+% projM= aveK*V;
+% projJ= aveK*V;
+% projS= aveK*V;
+% 
+% E1=norm(projK-projSelf)/norm(projK);
+% E2=norm(projA-projSelf)/norm(projA);
+% E3=norm(projR-projSelf)/norm(projR);
+% E4=norm(projC-projSelf)/norm(projC);
+% E5=norm(projM-projSelf)/norm(projM);
+% E6=norm(projJ-projSelf)/norm(projJ);
+% E7=norm(projS-projSelf)/norm(projS);
+% 
+
+e = B*V;
+x = [];
+for i = 1 : 84
+    projTmp = e(i,:);
+    Er = norm(projTmp-projSelf)/norm(projTmp);
+    disp(Er);
+    x(end + 1) = Er;
+end
+disp(x);
+result = min([x]);
+disp(result);
+
+[r,c]=find(x==min(min(x)))
+
+PhotoMatched = mod(c, 12)
+
+if(c > 0 && c < 13)
+   disp('You are Keanu Reeves!');
+end
+
+if(c > 12 && c < 25)
+    disp('You are Ariana Grande!');
+    end
+if(c > 24 && c < 37)
+    disp('You are Arnold Schwarzennegar!');
+    end
+ if(c > 36 && c < 49)
+    disp('You are Chadwick Boseman! Black Panther rrrRawr!');
+    end
+ if(c > 48 && c < 51)
+    disp('You are Misty Copeland!');
+    end
+ if(c > 50 && c < 73)
+    disp('You are MATT...DAMON!');
+ end
+if (c > 72 && c < 85)
+    disp('You are Sarah Silverman!');
+end
+
+
+
+figure(5)
+X = [1:84];
+Y = x;
+subplot(2,2,1), bar(X,Y), xlabel('Photos'), ylabel('error'), title('Error Matching');
+
+
+
+
+
+
+
