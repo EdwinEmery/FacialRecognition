@@ -1,0 +1,168 @@
+clear all; close all; clc
+
+%import pics, grayscale, resize, and make values double
+K1 = imresize(double(rgb2gray(imread('keanu1','jpeg'))),[120 80]);
+K2 = imresize(double(rgb2gray(imread('keanu2','jpeg'))),[120 80]);
+K3 = imresize(double(rgb2gray(imread('keanu3','jpeg'))),[120 80]);
+K4 = imresize(double(rgb2gray(imread('keanu4','jpeg'))),[120 80]);
+K5 = imresize(double(rgb2gray(imread('keanu5','jpeg'))),[120 80]);
+K6 = imresize(double(rgb2gray(imread('keanu6','jpeg'))),[120 80]);
+K7 = imresize(double(rgb2gray(imread('keanu7','jpeg'))),[120 80]);
+K8 = imresize(double(rgb2gray(imread('keanu8','jpeg'))),[120 80]);
+K9 = imresize(double(rgb2gray(imread('keanu9','jpeg'))),[120 80]);
+K10 = imresize(double(rgb2gray(imread('keanu10','jpeg'))),[120 80]);
+K11 = imresize(double(rgb2gray(imread('keanu11','jpeg'))),[120 80]);
+K12 = imresize(double(rgb2gray(imread('keanu12','jpeg'))),[120 80]);
+
+KI = imresize(double(rgb2gray(imread('keanuImmortal','jpeg'))),[120 80]);
+A1 = imresize(double(rgb2gray(imread('adamDriver','jpeg'))),[120 80]);
+PM = imresize(double(rgb2gray(imread('paulMounet','jpeg'))),[120 80]);
+CH = imresize(double(rgb2gray(imread('Charly','jpeg'))),[120 80]);
+NE = imresize(double(rgb2gray(imread('neo','jpeg'))),[120 80]);
+
+
+subplot(4,3,1), pcolor(flipud(K1)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,2), pcolor(flipud(K2)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,3), pcolor(flipud(K3)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,4), pcolor(flipud(K4)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,5), pcolor(flipud(K5)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,6), pcolor(flipud(K6)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,7), pcolor(flipud(K7)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,8), pcolor(flipud(K8)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,9), pcolor(flipud(K9)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,10), pcolor(flipud(K10)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,11), pcolor(flipud(K11)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(4,3,12), pcolor(flipud(K12)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+AveK=(K1+K2+K3+K4+K5+K6+K7+K8+K9+K10+K11+K12)/12;
+figure(2),
+subplot(2,2,1), pcolor(flipud(AveK)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+ 
+
+k1=reshape(K1,1,120*80) 				%put matrices into vectors
+k2=reshape(K2,1,120*80)
+k3=reshape(K3,1,120*80)
+k4=reshape(K4,1,120*80)
+k5=reshape(K5,1,120*80)
+k6=reshape(K6,1,120*80)
+k7=reshape(K7,1,120*80)
+k8=reshape(K8,1,120*80)
+k9=reshape(K9,1,120*80)
+k10=reshape(K10,1,120*80)
+k11=reshape(K11,1,120*80)
+k12=reshape(K12,1,120*80)
+
+
+
+B = [k1;k2;k3;k4;k5;k6;k7;k8;k9;k10;k11;k12] %image matrix
+ 
+C=B' * B;
+%C = cov(B); %wtf? B' B yields much better results!
+[V,D]=eigs(C,20,'lm');
+
+figure(3) %eigenface
+subplot(2,3,1), face1=reshape(V(:,1),120,80); pcolor(flipud(face1)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,2), face2=reshape(V(:,2),120,80); pcolor(flipud(face2)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,3), face3=reshape(V(:,3),120,80); pcolor(flipud(face3)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,4), face4=reshape(V(:,4),120,80); pcolor(flipud(face4)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,5), face5=reshape(V(:,5),120,80); pcolor(flipud(face5)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,3,6), face6=reshape(V(:,6),120,80); pcolor(flipud(face6)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+
+figure(4) %coef bargraph
+vecK=reshape(AveK, 1, 120*80)    %vector of average keanu
+
+projK=vecK*V;                           %projection of average Keanu onto eigenVector Space
+
+subplot(2,2,1), bar(projK(1:20)), set(gca,'Xlim',[0 20], 'Ylim',[-2000 2000], 'Xtick',[],'Ytick',[]);
+    text(12, -1700, 'Keanu', 'Fontsize', [15])
+
+%Thatcher Testing
+%take keanu immortal and project it, and reconstruct it using eigenfaces
+
+
+ki=reshape(KI,1,120*80)
+a1=reshape(A1,1,120*80)
+pm=reshape(PM,1,120*80)
+ch=reshape(CH,1,120*80)
+ne=reshape(NE,1,120*80)
+
+%projection onto eigenspace
+projki=ki*V;							%project ki onto eigenspace
+proja1=a1*V;                            %project a1 onto eigenspace
+projpm=pm*V;
+projch=ch*V;
+projk1=k1*V;                            %projection of "keanu1.jpeg"
+projk2=k2*V;
+projk3=k3*V;
+projk4=k4*V;
+projk5=k5*V;
+projk6=k6*V;
+projk7=k7*V;
+projk8=k8*V;
+projk9=k9*V;
+projk10=k10*V;
+projk11=k11*V;
+projk12=k12*V;
+
+
+%Reconstruction images FIXME??
+recon1 = V*projki'; rec1 = reshape(recon1, 120, 80); %silly
+recon2 = V*proja1'; rec2 = reshape(recon2, 120, 80);
+recon3 = V*projpm'; rec3 = reshape(recon3, 120, 80);
+recon4 = V*projch'; rec4 = reshape(recon4, 120, 80);
+figure(5)
+subplot(2,4,1), pcolor(flipud(rec1)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,2), pcolor(flipud(KI)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,3), pcolor(flipud(rec2)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,4), pcolor(flipud(A1)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,5), pcolor(flipud(rec3)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,6), pcolor(flipud(PM)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,7), pcolor(flipud(rec4)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,4,8), pcolor(flipud(CH)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+
+%specific Errors
+E1=norm(projK-projki)/norm(projK)	%projection error, Keanu Immortal vs Keanu average
+E2=norm(projK-proja1)/norm(projK)   %projection error, Adam Driver vs Keanu average 
+E3=norm(projK-projpm)/norm(projK)   %projection error, Adam Driver vs Keanu average 
+E4=norm(projK-projch)/norm(projK)   %projection error, Adam Driver vs Keanu average 
+
+
+% E=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+% E4=norm(projK-projch)/norm(projK)
+
+figure(6) %projection and reconstruction of Neo
+projne=ne*V;   
+recon5 = V*projne'; rec5 = reshape(recon5, 120, 80);
+subplot(2,2,1), pcolor(flipud(rec5)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+subplot(2,2,2), pcolor(flipud(NE)), shading interp, colormap(gray), set(gca,'Xtick',[],'Ytick',[]);
+
+E5=norm(projK-projne)/norm(projK)   %projection error, Neo vs Keanu average
+
+Er1=norm(projk1-projne)/norm(projk1)   %projection error, Neo vs Keanu set 
+Er2=norm(projk2-projne)/norm(projk2)
+Er3=norm(projk3-projne)/norm(projk3)
+Er4=norm(projk4-projne)/norm(projk4)
+Er5=norm(projk5-projne)/norm(projk5)
+Er6=norm(projk6-projne)/norm(projk6)
+Er7=norm(projk7-projne)/norm(projk7)
+Er8=norm(projk8-projne)/norm(projk8)
+Er9=norm(projk9-projne)/norm(projk9)
+Er10=norm(projk10-projne)/norm(projk10)
+Er11=norm(projk11-projne)/norm(projk11)
+Er12=norm(projk12-projne)/norm(projk12)
+
+%TK fill in other's bar graphs of errors to individual photos
+
+figure(7) %bar graph of errors with set of photos
+x = [1:12];
+y = [Er1, Er2, Er3, Er4, Er5, Er6, Er7, Er8, Er9, Er10, Er11, Er12];
+subplot(2,2,1), bar(x,y), xlabel('Keanu photos'), ylabel('error'), title('Neo Error Matching');
